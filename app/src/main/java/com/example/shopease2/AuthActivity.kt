@@ -1,70 +1,73 @@
 package com.example.shopease2
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class AuthActivity : AppCompatActivity() {
-
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var roleGroup: RadioGroup
+    private lateinit var auth: FirebaseAuth
+    private lateinit var email: TextView
+    private lateinit var password: TextView
     private lateinit var btnLogin: Button
-    private lateinit var tvRegister: TextView
-    private lateinit var tvForgotPassword: TextView
+    private lateinit var registerLink: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        roleGroup = findViewById(R.id.roleGroup)
+        auth = Firebase.auth
+        email = findViewById(R.id.email)
+        password = findViewById(R.id.password)
         btnLogin = findViewById(R.id.btnLogin)
-        tvRegister = findViewById(R.id.tvRegister) // Corrected ID
-        tvForgotPassword = findViewById(R.id.tvForgotPassword) // Corrected ID
+        registerLink = findViewById(R.id.btnRegister)
+        registerLink.setOnClickListener {
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        btnLogin.setOnClickListener {
+            val emailInput = email.text.toString().trim()
+            val passwordInput = password.text.toString().trim()
 
-        btnLogin.setOnClickListener { loginUser() }
-        tvRegister.setOnClickListener { goToRegisterScreen() }
-        tvForgotPassword.setOnClickListener { goToForgotPasswordScreen() }
-    }
+            if (emailInput.isEmpty() || passwordInput.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-    private fun getSelectedRole(): String {
-        return if (findViewById<RadioButton>(R.id.rbCustomer).isChecked) "customer" else "retailer"
-    }
+            auth.signInWithEmailAndPassword(emailInput, passwordInput)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "signInWithEmail:success")
+                        Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+                        // Redirect to home or main activity here
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
 
-    private fun loginUser() {
-        val email = etEmail.text.toString().trim()
-        val password = etPassword.text.toString().trim()
-
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show()
-            return
+                        finish()
+                    } else {
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            baseContext,
+                            "Authentication failed: ${task.exception?.localizedMessage}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
         }
 
-        val role = getSelectedRole()
-        Toast.makeText(this, "Logged in as $role", Toast.LENGTH_SHORT).show()
-        goToDashboard(role)
     }
 
-    private fun goToRegisterScreen() {
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
-    }
 
-    private fun goToForgotPasswordScreen() {
-        val intent = Intent(this, ForgotPasswordActivity::class.java)
-        startActivity(intent)
-    }
 
-    private fun goToDashboard(role: String) {
-        val intent = if (role == "customer") {
-            Intent(this, CustomerDashboardActivity::class.java)
-        } else {
-            Intent(this, RetailerDashboardActivity::class.java)
-        }
-        startActivity(intent)
-        finish()
-    }
+
+
+
+
+
+
 }
