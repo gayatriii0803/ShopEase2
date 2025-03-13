@@ -1,6 +1,9 @@
 package com.example.shopease2
 
 import android.os.Bundle
+import android.text.InputType
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,11 +20,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HomeFragment())
-            .commit()
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment())
+                .commit()
+        }
+
+
+
+        val bottomNav=findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
@@ -36,15 +44,15 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
-                R.id.nav_notifications -> {
+                R.id.nav_ShoppingCart -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, NotificationsFragment())
+                        .replace(R.id.fragment_container, ShoppingCartFragment())
                         .commit()
                     true
                 }
-                R.id.nav_settings -> {
+                R.id.nav_profile -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, SettingsFragment())
+                        .replace(R.id.fragment_container, ProfileFragment())
                         .commit()
                     true
                 }

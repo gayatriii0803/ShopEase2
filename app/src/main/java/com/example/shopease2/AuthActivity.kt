@@ -1,9 +1,11 @@
 package com.example.shopease2
-
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
@@ -21,6 +23,10 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         auth = Firebase.auth
         email = findViewById(R.id.email)
         password = findViewById(R.id.password)
@@ -34,6 +40,24 @@ class AuthActivity : AppCompatActivity() {
         forgotPassword.setOnClickListener {
             val intent = Intent(this,ForgotPasswordActivity::class.java)
             startActivity(intent)
+        }
+        var isPasswordVisible = false
+
+        val etPassword = findViewById<EditText>(R.id.loginpassword)
+        val ivTogglePassword = findViewById<ImageView>(R.id.passwordVisibilityToggle)
+
+
+        ivTogglePassword.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                ivTogglePassword.setImageResource(R.drawable.baseline_visibility_24) // replace with your "eye on" icon
+            } else {
+                etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                ivTogglePassword.setImageResource(R.drawable.baseline_visibility_off_24) // replace with your "eye off" icon
+            }
+            // Move cursor to the end of text after toggling
+            etPassword.setSelection(etPassword.text.length)
         }
         btnLogin.setOnClickListener {
             val emailInput = email.text.toString().trim()

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "982060407036",
-    "project_id": "shopease2-41867",
-    "storage_bucket": "shopease2-41867.firebasestorage.app"
+    "project_number": "1008848165585",
+    "project_id": "notes-db51c",
+    "storage_bucket": "notes-db51c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:982060407036:android:b6cecf6b884b7ce7c3df79",
+        "mobilesdk_app_id": "1:1008848165585:android:98ceb8aeec23bc82fa43f0",
         "android_client_info": {
           "package_name": "com.example.shopease2"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB4M7ZT8GRq2RO_4MWyIA0BpDakQAgN8Rc"
+          "current_key": "AIzaSyCb8eYqp05o9fC209Xob_-_GaG-efCWNCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008848165585:android:e3719ea700d97710fa43f0",
+        "android_client_info": {
+          "package_name": "com.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb8eYqp05o9fC209Xob_-_GaG-efCWNCo"
         }
       ],
       "services": {
