@@ -25,7 +25,7 @@
         android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SS"
+        android:text="VG"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#000000"
@@ -69,12 +69,13 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:backgroundTint="#fbd14c"
+        android:drawableLeft="@drawable/ic_logout"
+        android:gravity="center"
         android:text="Log Out"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:drawableLeft="@drawable/ic_logout"
-        android:gravity="center"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

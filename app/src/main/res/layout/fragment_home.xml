@@ -17,62 +17,59 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:paddingHorizontal="16dp"
             android:paddingTop="16dp"
             android:paddingBottom="8dp">
 
+            <!-- Menu Button (Left Side) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMenu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:icon="@drawable/ic_menu"
+                app:iconTint="#FFC107"
+                app:cornerRadius="12dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:contentDescription="Menu"/>
+
+            <!-- Delivery Label (Next to Menu Button) -->
+
+            <!-- Address (Below "Deliver to") -->
             <TextView
                 android:id="@+id/tvDeliveryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:text="Deliver to"
                 android:textColor="#757575"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.931"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMenu"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:contentDescription="Menu"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:cornerRadius="12dp"
-                app:icon="@drawable/ic_menu"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconTint="#FFC107"
-                app:layout_constraintBottom_toBottomOf="@id/btnNotification"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btnNotification" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNotification"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                app:icon="@drawable/ic_notifications"
-                app:iconTint="#FFC107"
-                app:cornerRadius="12dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
                 app:layout_constraintStart_toEndOf="@id/btnMenu"
-                app:layout_constraintTop_toTopOf="@id/tvDeliveryLabel"
-                app:layout_constraintBottom_toBottomOf="@id/tvAddress"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:contentDescription="Notifications"/>
+                app:layout_constraintTop_toTopOf="@id/btnMenu" />
 
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="119/116, Road 5, Block B"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvDeliveryLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvDeliveryLabel"/>
+
+            <!-- Search Bar (Below Address) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSearch"
                 android:layout_width="match_parent"
@@ -94,24 +91,11 @@
                     app:queryBackground="@android:color/transparent" />
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="230dp"
-                android:layout_height="25dp"
-                android:drawableStart="@drawable/ic_location"
-                android:drawablePadding="4dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="119/116, Road 5, Block B"
-                android:textColor="#212121"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/btnNotification"
-                app:layout_constraintTop_toBottomOf="@id/tvDeliveryLabel" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -130,14 +114,14 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPromotion"
-                android:layout_width="380dp"
-                android:layout_height="178dp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -187,7 +171,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <TextView
@@ -301,11 +285,10 @@
                 android:id="@+id/rvSuggested"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:clipToPadding="false"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvSuggestedTitle"
                 app:spanCount="2"
@@ -367,5 +350,4 @@
         app:icon="@drawable/ic_cart"
         app:backgroundTint="#FFC107"
         app:iconTint="@android:color/white" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
