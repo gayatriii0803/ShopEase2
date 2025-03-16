@@ -4,47 +4,49 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.Button
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ProductAdapter
-    private val productList = mutableListOf<Product>()
+    private lateinit var drawerLayout: DrawerLayout  // Reference to DrawerLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        recyclerView = view.findViewById(R.id.rvCategories)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = ProductAdapter(productList)
-        recyclerView.adapter = adapter
 
-        fetchProducts()
+        // Get DrawerLayout from the Activity
+        drawerLayout = requireActivity().findViewById(R.id.drawerLayout)
+
+        // Find btnMenu and set click listener
+        val btnMenu = view.findViewById<Button>(R.id.btnMenu)
+        btnMenu.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
 
         return view
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private fun fetchProducts() {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("products")
-            .get()
-            .addOnSuccessListener { result ->
-                productList.clear()
-                for (document in result) {
-                    val product = document.toObject(Product::class.java)
-                    productList.add(product)
-                }
-                adapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener {
-                Toast.makeText(context, "Failed to load products", Toast.LENGTH_SHORT).show()
-            }
+        val rvCategories = view.findViewById<RecyclerView>(R.id.rvCategories)
+
+        val categoryList = listOf(
+            category("Fruits", R.drawable.ic_fruits),
+            category("Vegetables", R.drawable.ic_vegetables),
+            category("Meat", R.drawable.ic_meat),
+            category("Bakery", R.drawable.ic_bakery),
+            category("Dairy", R.drawable.ic_dairy)
+        )
+
+        rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        rvCategories.adapter = CategoryAdapter(categoryList)
     }
+
 }

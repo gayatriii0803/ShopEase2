@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#fbd14c</color>
+    <color name="icon_color">#fbd14c</color> <!-- Change to your preferred color -->
+    <color name="alert_logout_color">#FF0000</color> <!-- Red color for alert & logout -->
 </resources>

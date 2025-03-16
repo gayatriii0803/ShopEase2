@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class ProfileFragment : Fragment(R.layout.fragement_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -14,7 +14,7 @@ class ProfileFragment : Fragment(R.layout.fragement_profile) {
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userName = sharedPreferences.getString("user_name", "User")
 
-        val nameTextView = view.findViewById<TextView>(R.id.profileUsername)
+        val nameTextView = view.findViewById<TextView>(R.id.tvUserName)
         nameTextView.text = "$userName"
     }
 }
