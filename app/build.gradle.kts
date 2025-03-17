@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.google.services) // Apply Google Services plugin here
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.kotlin.kapt)
+
+
 }
 
 android {
@@ -56,6 +59,10 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    kapt ("com.github.bumptech.glide:compiler:4.15.1")
+
 
     // UI
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -68,3 +75,6 @@ dependencies {
 
 // Apply Google Services Plugin
 apply(plugin = "com.google.gms.google-services")
+
+
+
