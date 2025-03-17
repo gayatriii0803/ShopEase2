@@ -24,6 +24,8 @@ class HomeFragment : Fragment() {
         // Get DrawerLayout from the Activity
         drawerLayout = requireActivity().findViewById(R.id.drawerLayout)
 
+
+
         // Find btnMenu and set click listener
         val btnMenu = view.findViewById<Button>(R.id.btnMenu)
         btnMenu.setOnClickListener {
@@ -38,9 +40,8 @@ class HomeFragment : Fragment() {
         val rvCategories = view.findViewById<RecyclerView>(R.id.rvCategories)
 
         val categoryList = listOf(
-            category("Fruits", R.drawable.ic_fruits),
-            category("Vegetables", R.drawable.ic_vegetables),
-            category("Meat", R.drawable.ic_meat),
+            category("Fruits and vegetables", R.drawable.ic_fruitsandvegetables),
+            category("Soda and detergents", R.drawable.ic_shampoo),
             category("Bakery", R.drawable.ic_bakery),
             category("Dairy", R.drawable.ic_dairy)
         )

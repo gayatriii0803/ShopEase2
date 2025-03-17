@@ -2,10 +2,12 @@ package com.example.shopease2
 
 import SearchAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
@@ -20,32 +22,60 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         soapsDetergentsRecyclerView=view.findViewById(R.id.soapsDetergentsRecyclerView)
         bakeryRecyclerView=view.findViewById(R.id.bakeryRecyclerView)
 
-        val products = listOf(
-            Product("Apple", "₹60/kg", R.drawable.ic_fruits),
-            Product("Banana", "₹40/kg", R.drawable.ic_dairy),
-            Product("Tomato", "₹30/kg", R.drawable.ic_vegetables)
-        )
+        val db = FirebaseFirestore.getInstance()
+        db.collection("Products")
+            .whereEqualTo("category", "fruits")
+            .get()
+            .addOnSuccessListener { documents ->
+                val fruitsList = mutableListOf<Product>()
+                for (document in documents) {
+                    val name = document.getString("name") ?: ""
+                    val price = document.getString("price") ?: ""
+                    val imageUrl = document.getString("image") ?: "" // Or map from Firestore if you're storing image keys
+                    fruitsList.add(Product(name, price, imageUrl))
 
-        val products1 = listOf(
-            Product("Apple", "₹60/kg", R.drawable.ic_fruits),
-            Product("Banana", "₹40/kg", R.drawable.ic_dairy),
-            Product("Tomato", "₹30/kg", R.drawable.ic_vegetables)
-        )
+                }
 
-        val products2 = listOf(
-            Product("Apple", "₹60/kg", R.drawable.ic_fruits),
-            Product("Banana", "₹40/kg", R.drawable.ic_dairy),
-            Product("Tomato", "₹30/kg", R.drawable.ic_vegetables)
-        )
+                fruitsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                fruitsRecyclerView.adapter = SearchAdapter(fruitsList)
+            }
+            .addOnFailureListener { exception ->
+                Log.d("SearchFragment", "Error getting fruits: ", exception)
+            }
 
-        fruitsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        fruitsRecyclerView.adapter = SearchAdapter(products)
+        db.collection("Products")
+            .whereEqualTo("category", "soaps")
+            .get()
+            .addOnSuccessListener { documents ->
+                val soapsList = mutableListOf<Product>()
+                for (document in documents) {
+                    val name = document.getString("name") ?: ""
+                    val price = document.getString("price") ?: ""
+                    val imageUrl = document.getString("image") ?: ""
+                    soapsList.add(Product(name, price, imageUrl))
+                }
 
-        soapsDetergentsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        soapsDetergentsRecyclerView.adapter = SearchAdapter(products1)
+                soapsDetergentsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                soapsDetergentsRecyclerView.adapter = SearchAdapter(soapsList)
+            }
 
-        bakeryRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        bakeryRecyclerView.adapter = SearchAdapter(products2)
+        // Repeat for bakery
+        db.collection("Products")
+            .whereEqualTo("category", "bakery")
+            .get()
+            .addOnSuccessListener { documents ->
+                val bakeryList = mutableListOf<Product>()
+                for (document in documents) {
+                    val name = document.getString("name") ?: ""
+                    val price = document.getString("price") ?: ""
+                    val imageUrl = document.getString("image") ?: ""
+                    bakeryList.add(Product(name, price, imageUrl))
+                }
+
+                bakeryRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                bakeryRecyclerView.adapter = SearchAdapter(bakeryList)
+            }
+
 
 
     }

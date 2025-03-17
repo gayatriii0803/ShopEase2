@@ -26,7 +26,7 @@ class CartAdapter(private val cartItems: List<Product>) :
         val product = cartItems[position]
         holder.productName.text = product.name
         holder.productPrice.text = product.price
-        holder.productImage.setImageResource(product.imageResId)
+//        holder.productImage.setImageResource(product.imageUrl)
         holder.itemView.findViewById<TextView>(R.id.productQuantity).text = "x${product.Quantity}"
     }
 

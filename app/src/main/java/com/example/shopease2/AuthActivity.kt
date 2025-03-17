@@ -15,10 +15,10 @@ import com.google.firebase.auth.auth
 class AuthActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var email: TextView
-    private lateinit var password: TextView
     private lateinit var btnLogin: Button
     private lateinit var registerLink: TextView
     private lateinit var forgotPassword: TextView
+    private lateinit var password:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

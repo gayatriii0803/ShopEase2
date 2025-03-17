@@ -5,6 +5,6 @@ import androidx.core.location.LocationRequestCompat.Quality
 data class Product(
     val name: String,
     val price: String,
-    val imageResId: Int,
+    val imageUrl: String,
     var Quantity: Int = 1
 )

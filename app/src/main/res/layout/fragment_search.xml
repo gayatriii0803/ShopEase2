@@ -143,16 +143,6 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Floating Action Button for Cart -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cartFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="#FBD14C"
-        android:src="@drawable/ic_cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="#333333" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

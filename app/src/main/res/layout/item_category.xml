@@ -9,20 +9,21 @@
 
     <ImageView
         android:id="@+id/ivCategoryIcon"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:background="@drawable/bg_circle"
         android:padding="16dp"
         android:src="@drawable/ic_fruits"
         android:clipToOutline="true"
-        android:cropToPadding="true" />
+        android:outlineProvider="background" />
+
 
     <TextView
         android:id="@+id/tvCategoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fruits"
+        android:text="Fruits and Vegetables"
         android:textSize="14sp"
         android:textColor="#212121"
         android:layout_marginTop="8dp" />

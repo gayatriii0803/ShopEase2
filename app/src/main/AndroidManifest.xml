@@ -26,6 +26,9 @@
         </activity>
         <activity android:name=".AuthActivity"/>
         <activity android:name=".RegisterActivity"/>
+        <activity android:name=".ProductDetailActivity"/>
+        <activity android:name=".UserDetailActivity"/>
+        <activity android:name=".OrderSummaryActivity" />
 
         <activity android:name=".ForgotPasswordActivity"/>
 

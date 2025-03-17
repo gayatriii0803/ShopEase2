@@ -64,6 +64,7 @@ dependencies {
     kapt ("com.github.bumptech.glide:compiler:4.15.1")
 
 
+
     // UI
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
