@@ -13,9 +13,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userName = sharedPreferences.getString("user_name", "User")
+        val savedEmail = sharedPreferences.getString("user_email", "email@example.com")
 
         val nameTextView = view.findViewById<TextView>(R.id.tvUserName)
+        val userEmailTextView = view.findViewById<TextView>(R.id.tvUserEmail)
         nameTextView.text = "$userName"
+        userEmailTextView.text = "$savedEmail"
     }
 }
 

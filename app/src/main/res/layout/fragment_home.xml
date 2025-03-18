@@ -69,7 +69,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Fresh Market"
+                    android:text="ShopEase"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -172,11 +172,13 @@
                 app:tabIndicatorHeight="0dp"
                 app:tabMode="fixed" />
 
+
             <TextView
                 android:id="@+id/tvCategoriesTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
                 android:text="Explore Categories"
                 android:textColor="#212121"
                 android:textSize="18sp"
@@ -184,23 +186,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tabLayoutIndicator" />
 
-            <TextView
-                android:id="@+id/tvSeeAllCategories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#4CAF50"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/tvCategoriesTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvCategoriesTitle" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
                 android:overScrollMode="never"
@@ -211,6 +201,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvCategoriesTitle"
                 tools:itemCount="5"
                 tools:listitem="@layout/item_category" />
+
 
             <TextView
                 android:id="@+id/tvSuggestedTitle"
@@ -223,18 +214,6 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvCategories" />
-
-            <TextView
-                android:id="@+id/tvSeeAllSuggested"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#4CAF50"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/tvSuggestedTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvSuggestedTitle" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSuggested"
@@ -251,47 +230,9 @@
                 tools:itemCount="4"
                 tools:listitem="@layout/item_search" />
 
-            <TextView
-                android:id="@+id/tvDealsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Hot Deals"
-                android:textColor="#212121"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvSuggested" />
 
-            <TextView
-                android:id="@+id/tvSeeAllDeals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="#4CAF50"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/tvDealsTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvDealsTitle" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDeals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:overScrollMode="never"
-                android:paddingEnd="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDealsTitle"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_deal" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-    
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

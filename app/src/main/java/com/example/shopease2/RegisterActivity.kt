@@ -39,8 +39,11 @@ class RegisterActivity : AppCompatActivity() {
         username=findViewById(R.id.username)
         auth = Firebase.auth
         login.setOnClickListener {
-            // Navigate to LoginActivity
-            onBackPressedDispatcher.onBackPressed()
+
+//            onBackPressedDispatcher.onBackPressed()
+            val intent = Intent(this,AuthActivity::class.java)
+            startActivity(intent)
+
         }
 
         val etPassword = findViewById<EditText>(R.id.password)
@@ -106,6 +109,7 @@ class RegisterActivity : AppCompatActivity() {
                         val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putString("user_name", nameInput)
+                        editor.putString("user_email", emailInput)
                         editor.apply()
                         Log.d(TAG, "createUserWithEmail:success")
                         Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()

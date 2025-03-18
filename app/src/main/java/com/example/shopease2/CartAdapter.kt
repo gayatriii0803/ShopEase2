@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class CartAdapter(private val cartItems: List<Product>) :
     RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
@@ -28,6 +29,10 @@ class CartAdapter(private val cartItems: List<Product>) :
         holder.productPrice.text = product.price
 //        holder.productImage.setImageResource(product.imageUrl)
         holder.itemView.findViewById<TextView>(R.id.productQuantity).text = "x${product.Quantity}"
+
+        Glide.with(holder.itemView.context)
+            .load(product.imageUrl)
+            .into(holder.productImage)
     }
 
     override fun getItemCount() = cartItems.size
