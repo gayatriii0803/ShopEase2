@@ -29,7 +29,7 @@ class AuthActivity : AppCompatActivity() {
         )
         auth = Firebase.auth
         email = findViewById(R.id.email)
-        password = findViewById(R.id.password)
+        password = findViewById(R.id.loginpassword)
         btnLogin = findViewById(R.id.btnLogin)
         registerLink = findViewById(R.id.btnRegister)
         registerLink.setOnClickListener {

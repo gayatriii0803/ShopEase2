@@ -14,7 +14,7 @@ android:padding="16dp">
     android:contentDescription="Profile Image" />
 
 <TextView
-    android:id="@+id/tvUserName"
+    android:id="@+id/userNameheader"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="VG"
@@ -22,7 +22,7 @@ android:padding="16dp">
     android:textStyle="bold" />
 
 <TextView
-    android:id="@+id/tvUserEmail"
+    android:id="@+id/userEmailheader"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="abc123@example.com"
