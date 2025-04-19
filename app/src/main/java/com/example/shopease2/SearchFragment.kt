@@ -14,6 +14,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var fruitsRecyclerView: RecyclerView
     private lateinit var soapsDetergentsRecyclerView:RecyclerView
     private lateinit var bakeryRecyclerView:RecyclerView
+    private lateinit var cerealsandpulses:RecyclerView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -21,8 +22,28 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         fruitsRecyclerView = view.findViewById(R.id.fruitsVegetablesRecyclerView)
         soapsDetergentsRecyclerView=view.findViewById(R.id.soapsDetergentsRecyclerView)
         bakeryRecyclerView=view.findViewById(R.id.bakeryRecyclerView)
+        cerealsandpulses=view.findViewById(R.id.cerealsandpulses)
 
         val db = FirebaseFirestore.getInstance()
+        db.collection("Products")
+            .whereEqualTo("category", "pulses")
+            .get()
+            .addOnSuccessListener { documents ->
+                val cerealList = mutableListOf<Product>()
+                for (document in documents) {
+                    val name = document.getString("name") ?: ""
+                    val price = document.getString("price") ?: ""
+                    val imageUrl = document.getString("image") ?: "" // Or map from Firestore if you're storing image keys
+                    cerealList.add(Product(name, price, imageUrl))
+
+                }
+
+                cerealsandpulses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                cerealsandpulses.adapter = SearchAdapter(cerealList)
+            }
+            .addOnFailureListener { exception ->
+                Log.d("SearchFragment", "Error getting fruits: ", exception)
+            }
         db.collection("Products")
             .whereEqualTo("category", "fruits")
             .get()

@@ -25,8 +25,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMenu"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:contentDescription="Menu"
                 android:insetLeft="0dp"
                 android:insetTop="0dp"
@@ -40,24 +40,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNotification"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                app:icon="@drawable/ic_notifications"
-                app:iconTint="#FFC107"
-                app:cornerRadius="12dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:contentDescription="Notifications"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -69,7 +51,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="ShopEase"
+                    android:text="SHOPEASE"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -143,6 +125,7 @@
                             android:textSize="18sp" />
 
                         <Button
+                            android:id="@+id/shopNow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"

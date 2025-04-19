@@ -96,7 +96,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/button_add_to_cart"
             android:backgroundTint="#FBD14C"
             android:paddingStart="24dp"
             android:paddingTop="12dp"
@@ -106,7 +105,45 @@
             android:textColor="#333333" />
     </LinearLayout>
 
-    <!-- Bottom Summary Card -->
+    <LinearLayout
+        android:id="@+id/selectionActionsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="end"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#FFF6D4">
+
+        <Button
+            android:id="@+id/selectAllButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select All"
+            android:backgroundTint="#FBD14C"
+            android:textColor="#333333" />
+
+        <Button
+            android:id="@+id/deleteSelectedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Delete"
+            android:backgroundTint="#FBD14C"
+            android:textColor="#333333" />
+        <Button
+            android:id="@+id/orderNowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Now"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#FBD14C"
+            android:textColor="#333333" />
+    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,16 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout)
         navView = findViewById(R.id.navView)
+        if (intent.getBooleanExtra("SHOW_HOME_FRAGMENT", false)) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()) // Use your actual container ID
+                .commit()
+        } else {
+            // Default fragment on app open
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()) // Or some other fragment
+                .commit()
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -44,9 +54,7 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> loadFragment(HomeFragment())
-                R.id.nav_notifications -> loadFragment(NotificationsFragment())
                 R.id.nav_settings -> loadFragment(SettingsFragment())
-                R.id.nav_theme -> loadFragment(ThemeFragment())
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
