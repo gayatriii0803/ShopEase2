@@ -55,8 +55,6 @@ class DrawerMenuFragment : Fragment(), NavigationView.OnNavigationItemSelectedLi
             R.id.nav_search -> showToast("Search")
             R.id.nav_notifications -> showToast("Notifications")
             R.id.nav_settings -> showToast("Settings")
-            R.id.nav_theme -> toggleTheme()
-            R.id.nav_logout -> showToast("Logged Out")
         }
 
         // Close drawer after selection

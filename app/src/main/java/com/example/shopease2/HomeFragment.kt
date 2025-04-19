@@ -1,6 +1,7 @@
 package com.example.shopease2
 
 import SuggestedAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,12 @@ class HomeFragment : Fragment() {
 
         // Get DrawerLayout from the Activity
         drawerLayout = requireActivity().findViewById(R.id.drawerLayout)
+        val shopNow=view.findViewById<Button>(R.id.shopNow)
+        shopNow.setOnClickListener{
+            val intent = Intent(requireContext(), ProductActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
 
@@ -51,7 +58,11 @@ class HomeFragment : Fragment() {
         )
 
         rvCategories.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        rvCategories.adapter = CategoryAdapter(categoryList)
+        rvCategories.adapter = CategoryAdapter(categoryList) { selectedCategory ->
+            val intent = android.content.Intent(requireContext(), ProductActivity::class.java)
+            intent.putExtra("category", selectedCategory.name)
+            startActivity(intent)
+        }
 
         val db = FirebaseFirestore.getInstance()
         db.collection("Products")

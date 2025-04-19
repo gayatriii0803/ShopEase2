@@ -1,5 +1,7 @@
 package com.example.shopease2
 
+
+
 object CartManager {
     private val cartItems = mutableListOf<Product>()
 
